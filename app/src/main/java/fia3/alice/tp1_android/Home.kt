@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.WindowSizeClass
@@ -18,23 +19,26 @@ import fia3.alice.tp1_android.ui.theme.TP1_AndroidTheme
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 @Composable
-fun DisplayFile(windowClass: WindowSizeClass) {
+fun Home(windowClass: WindowSizeClass, navController: NavController) {
     when(windowClass.widthSizeClass) {
         WindowWidthSizeClass.Compact -> {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.Center
+                modifier = Modifier.fillMaxSize(),
             ) {
+                Spacer(modifier = Modifier.size(70.dp))
                 Image(
                     painterResource(id = R.drawable.panda1),
                     contentDescription = "Test",
                     modifier = Modifier
                         .clip(CircleShape)
-                        .size(250.dp)
-                        .border(2.dp, Color.Gray, CircleShape)
+                        .size(200.dp)
+                        .border(4.dp, Color.Gray, CircleShape)
                 )
                 Spacer(modifier = Modifier.size(10.dp))
                 Text(
@@ -45,39 +49,50 @@ fun DisplayFile(windowClass: WindowSizeClass) {
                     text = "Elève apprentie de l'école d'ingénieur ISIS"
                 )
                 Spacer(modifier = Modifier.size(30.dp))
-                Row{
-                    Image(
-                        painterResource(id = R.drawable.icon_mail),
-                        contentDescription = "Icon mail",
-                        modifier = Modifier
-                            .size(25.dp)
-                            .padding(5.dp)
-                    )
-                    Text(
-                        text = "brichet.alice@gmail.com"
-                    )
+                Column(
+                    horizontalAlignment = Alignment.Start
+                ) {
+                    Row(
+                        horizontalArrangement = Arrangement.Start
+                    ){
+                        Image(
+                            painterResource(id = R.drawable.icon_mail),
+                            contentDescription = "Icon mail",
+                            modifier = Modifier
+                                .size(25.dp)
+                                .padding(5.dp)
+                        )
+                        Text(
+                            text = "brichet.alice@gmail.com"
+                        )
+                    }
+                    Row(
+                        horizontalArrangement = Arrangement.Start
+                    ){
+                        Image(
+                            painterResource(id = R.drawable.icon_linkedin),
+                            contentDescription = "Icon mail",
+                            modifier = Modifier
+                                .size(25.dp)
+                                .padding(5.dp)
+                        )
+                        Text(
+                            text = "https://www.linkedin.com/in/alice-brichet-dit-france",
+                            fontSize = 15.sp
+                        )
+                    }
+                    Spacer(modifier = Modifier.size(10.dp))
                 }
-                Row(
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    Image(
-                        painterResource(id = R.drawable.icon_linkedin),
-                        contentDescription = "Icon mail",
-                        modifier = Modifier
-                            .size(25.dp)
-                            .padding(5.dp)
-                    )
-                    Text(
-                        text = "https://www.linkedin.com/in/alice-brichet-dit-france",
-                        fontSize = 15.sp
-                    )
+                Button(onClick = {navController.navigate("Films")}) {
+
                 }
             }
         }
         else -> {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Center
+                horizontalArrangement = Arrangement.Center,
+                modifier = Modifier.fillMaxSize(),
             ) {
                 Column(
                     horizontalAlignment = Alignment.CenterHorizontally,

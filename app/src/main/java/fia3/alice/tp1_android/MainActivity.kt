@@ -9,6 +9,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import fia3.alice.tp1_android.ui.theme.TP1_AndroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -22,8 +25,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
+                    val navController = rememberNavController()
                     val windowSizeClass = calculateWindowSizeClass(this)
-                    DisplayFile(windowSizeClass)
+                    NavHost(
+                        navController = navController,
+                        startDestination = "Home") {
+                            composable("Home") {
+                                Home(windowSizeClass,navController)
+                            }
+                            composable("Films") {
+                                Films(windowSizeClass,navController)
+                            }
+                        }
                 }
             }
         }
