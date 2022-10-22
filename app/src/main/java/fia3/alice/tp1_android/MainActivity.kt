@@ -3,6 +3,7 @@ package fia3.alice.tp1_android
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -18,6 +19,9 @@ class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        val viewModel : MainViewModel by viewModels()
+
         setContent {
             TP1_AndroidTheme {
                 // A surface container using the 'background' color from the theme
@@ -34,7 +38,7 @@ class MainActivity : ComponentActivity() {
                                 Home(windowSizeClass,navController)
                             }
                             composable("Films") {
-                                Films(windowSizeClass,navController)
+                                Films(windowSizeClass,navController, viewModel)
                             }
                         }
                 }

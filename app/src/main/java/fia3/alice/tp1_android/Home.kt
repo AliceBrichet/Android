@@ -83,8 +83,9 @@ fun Home(windowClass: WindowSizeClass, navController: NavController) {
                     }
                     Spacer(modifier = Modifier.size(10.dp))
                 }
-                Button(onClick = {navController.navigate("Films")}) {
-
+                Button(
+                    onClick = {navController.navigate("Films")}) {
+                    Text(text="Démarrer")
                 }
             }
         }
@@ -118,40 +119,49 @@ fun Home(windowClass: WindowSizeClass, navController: NavController) {
                 }
                 Spacer(modifier = Modifier.size(10.dp))
                 Column(
-                    horizontalAlignment = Alignment.Start,
-                    verticalArrangement = Arrangement.Center
-                ){
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                )
+                {
+                    Column(
+                        horizontalAlignment = Alignment.Start,
+                        verticalArrangement = Arrangement.Center
                     ) {
-                        Image(
-                            painterResource(id = R.drawable.icon_mail),
-                            contentDescription = "Icon mail",
-                            modifier = Modifier
-                                .size(35.dp)
-                                .padding(5.dp)
-                        )
-                        Text(
-                            text = "brichet.alice@gmail.com",
-                            fontSize = 15.sp
-                        )
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Image(
+                                painterResource(id = R.drawable.icon_mail),
+                                contentDescription = "Icon mail",
+                                modifier = Modifier
+                                    .size(35.dp)
+                                    .padding(5.dp)
+                            )
+                            Text(
+                                text = "brichet.alice@gmail.com",
+                                fontSize = 15.sp
+                            )
+                        }
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Image(
+                                painterResource(id = R.drawable.icon_linkedin),
+                                contentDescription = "Icon mail",
+                                modifier = Modifier
+                                    .size(35.dp)
+                                    .padding(5.dp)
+                            )
+                            Text(
+                                text = "https://www.linkedin.com/in/alice-brichet-dit-france",
+                                fontSize = 15.sp
+                            )
+                        }
                     }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.Center
-                    ) {
-                        Image(
-                            painterResource(id = R.drawable.icon_linkedin),
-                            contentDescription = "Icon mail",
-                            modifier = Modifier
-                                .size(35.dp)
-                                .padding(5.dp)
-                        )
-                        Text(
-                            text = "https://www.linkedin.com/in/alice-brichet-dit-france",
-                            fontSize = 15.sp
-                        )
+                    Button(
+                        onClick = { navController.navigate("Films") }) {
+                        Text(text = "Démarrer")
                     }
                 }
             }
