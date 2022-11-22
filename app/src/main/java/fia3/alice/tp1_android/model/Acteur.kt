@@ -1,17 +1,31 @@
-package fia3.alice.tp1_android
+package fia3.alice.tp1_android.model
 
-data class TmdbResult(
+data class TmdbActorResult(
     val page: Int,
-    val results: List<Movie>,
+    val results: List<Actor>,
     val total_pages: Int,
     val total_results: Int
 )
 
-data class Movie(
+data class Actor(
+    val adult: Boolean,
+    val gender: Int,
+    val id: Int,
+    val known_for: List<KnownFor>,
+    val known_for_department: String,
+    val media_type: String,
+    val name: String,
+    val original_name: String,
+    val popularity: Double,
+    val profile_path: String
+)
+
+data class KnownFor(
     val adult: Boolean,
     val backdrop_path: String,
     val genre_ids: List<Int>,
     val id: Int,
+    val media_type: String,
     val original_language: String,
     val original_title: String,
     val overview: String,
